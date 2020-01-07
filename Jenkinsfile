@@ -16,7 +16,7 @@ pipeline {
         stage('Validate deployment'){
             steps{
                 sh '''
-                    response=$(curl -s -o /dev/null -w "%{http_code}\n" http://jenkins-udacity-mustafa.s3-website.us-east-2.amazonaws.com/memo.html)
+                    response=$(curl -s -o /dev/null -w "%{http_code}\n" http://jenkins-udacity-mustafa.s3-website.us-east-2.amazonaws.com/)
                     if [ "$response" != "200" ]
                     then
                         exit 1
