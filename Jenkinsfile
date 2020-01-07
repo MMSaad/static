@@ -9,7 +9,9 @@ pipeline {
         stage('Upload to AWS'){
             steps{
                 withAWS(credentials:'aws-static') {
-                    s3Upload(file:'index.html', bucket:'jenkins-udacity-mustafa', path:'index.html')
+                    retry(2) {
+                        s3Upload(file:'index.html', bucket:'jenkins-udacity-mustafa', path:'index.html')
+                    }
                 }
             }
         }
