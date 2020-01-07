@@ -13,5 +13,10 @@ pipeline {
                 }
             }
         }
+        stage('Validate deployment'){
+            steps{
+                sh 'curl -o /dev/null --silent --head --write-out '%{http_code}\n' http://jenkins-udacity-mustafa.s3-website.us-east-2.amazonaws.com/'
+            }
+        }
     }
 }
